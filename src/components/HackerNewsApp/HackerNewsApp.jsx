@@ -1,11 +1,23 @@
-import { HackerNewsHeader, HackerNewsBody } from "../"
+import { HackerNewsHeader, HackerNewsBody } from "../";
+import Grid from "@mui/material/Grid";
 
 export const HackerNewsApp = () => {
   return (
     <>
-    <h1>Hacker News - Web tech</h1>
-    <HackerNewsHeader/>
-    <HackerNewsBody/>
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid container>
+          <HackerNewsHeader />
+        </Grid>
+
+        <Grid container>
+          <HackerNewsBody />
+        </Grid>
+      </Grid>
     </>
-  )
-}
+  );
+};
