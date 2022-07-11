@@ -25,8 +25,8 @@ export const HackerNewsGrid = () => {
           container
           direction="row"
           justifyContent="center"
-          alignItems="space-between"
-          columnSpacing={{ xs: 2, sm: 4, md: 4, lg: 6 }}
+          alignItems="center"
+          columnSpacing={{ xs: 2, sm: 4, md: 8, lg: 8 }}
           columns={{ xs: 10, sm: 10, md: 14, lg: 16 }}
         >
           <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
