@@ -1,0 +1,56 @@
+.box-shadow {
+  padding: 15px 15px 20px 15px;
+  width: 68px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 0px 6px px;
+  background-color: #60606021;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span,
+p {
+  margin: 0.3em;
+}
+
+.created-date-autor {
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #767676;
+}
+
+.title-box {
+  margin-top: 0.4em;
+}
+
+.new-title {
+  font-weight: 500;
+  line-height: 1.43;
+  letter-spacing: 0.25px;
+  color: #6b6b6b;
+  margin-left: 0;
+}
+
+.new-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-news {
+  display: flex;
+  flex-direction: column;
+}
+
+.created-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

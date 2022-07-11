@@ -1,5 +1,7 @@
+import "./styles.css";
+
 export const HackerNewsPagination = () => {
   return (
-    <div>HackerNewsPagination</div>
+    <></>
   )
-}
+};
