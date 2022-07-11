@@ -1,5 +1,9 @@
 import "./styles.css";
-import { HackerNewsGrid, HackerNewsMenu, HackerNewsPagination } from "../";
+import {
+  HackerNewsGrid,
+  HackerNewsMenu,
+  HackerNewsDropbox,
+} from "../";
 
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -16,11 +20,11 @@ export const HackerNewsBody = () => {
   }));
   return (
     <>
-      <Box sx={{ height: '100vh', width: "100%" }}>
+      <Box sx={{ height: "100vh", width: "100%" }}>
         <Box
           sx={{
-            padding: '40px',
-            width: '100%',
+            padding: "40px",
+            width: "100%",
             color: (theme) =>
               theme.palette.mode === "dark" ? "grey.300" : "grey.800",
             border: "1px solid",
@@ -31,11 +35,19 @@ export const HackerNewsBody = () => {
             textAlign: "center",
           }}
         >
-          Height 20%
+          <div>
+            <div>
+            <HackerNewsMenu />
+            </div>
+            <div>
+              <HackerNewsDropbox/>
+            </div>
+          </div>
+          
         </Box>
         <Box
           sx={{
-            width: '100%',
+            width: "100%",
             color: (theme) =>
               theme.palette.mode === "dark" ? "grey.300" : "grey.800",
             border: "1px solid",
@@ -46,12 +58,12 @@ export const HackerNewsBody = () => {
             textAlign: "center",
           }}
         >
-          <HackerNewsGrid/>
+          <HackerNewsGrid />
         </Box>
         <Box
           sx={{
-            padding: '40px',
-            width: '100%',
+            padding: "40px",
+            width: "100%",
             color: (theme) =>
               theme.palette.mode === "dark" ? "grey.300" : "grey.800",
             border: "1px solid",
