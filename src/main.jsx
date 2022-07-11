@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import { HackerNewsApp } from './components/HackerNewsApp/HackerNewsApp'
+
+import './styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <HackerNewsApp />
   </React.StrictMode>
 )
