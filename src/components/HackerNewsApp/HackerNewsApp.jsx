@@ -1,4 +1,3 @@
-import "./styles.css";
 import { HackerNewsHeader, HackerNewsBody } from "../";
 import Grid from "@mui/material/Grid";
 

@@ -23,7 +23,7 @@ export const HackerNewsDropbox = () => {
         m: 1,
         width: { xs: "60%", sm: "30%", md: "30%", lg: "15%" },
         ml: { xs: 12, sm: 10, md: 10, lg: 25 },
-        mt: 5,
+        mt: 1,
       }}
       size="small"
       className="dropbox-container"
