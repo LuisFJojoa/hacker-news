@@ -23,9 +23,6 @@ export const HackerNewsBody = () => {
         <Box
           sx={{
             width: "100%",
-            color: (theme) =>
-              theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-            fontSize: "0.875rem",
             fontWeight: "700",
             textAlign: "center",
           }}
@@ -39,9 +36,6 @@ export const HackerNewsBody = () => {
         <Box
           sx={{
             width: "100%",
-            color: (theme) =>
-              theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-            fontSize: "0.875rem",
             fontWeight: "700",
             textAlign: "center",
           }}
@@ -51,9 +45,6 @@ export const HackerNewsBody = () => {
         <Box
           sx={{
             width: "100%",
-            color: (theme) =>
-              theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-            fontSize: "0.875rem",
             fontWeight: "700",
             textAlign: "center",
           }}

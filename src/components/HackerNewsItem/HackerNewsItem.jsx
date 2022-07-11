@@ -14,13 +14,10 @@ export const HackerNewsItem = ({ title }) => {
     opacity: 0.8,
     borderRadius: "6px",
     border: "solid 1px #979797",
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     paddingLeft: theme.spacing(2),
-    paddingTop: theme.spacing(-2),
-    paddingBottom: theme.spacing(-2),
     textAlign: "left",
-    color: theme.palette.text.secondary,
   }));
 
   return (

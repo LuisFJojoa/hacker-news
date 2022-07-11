@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./styles.css";
 
 export const HackerNewsMenu = () => {
-  const [page, setPage] = useState("News");
+  const [page, setPage] = useState("All");
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
     console.log(newPage);
@@ -22,8 +22,8 @@ export const HackerNewsMenu = () => {
       exclusive
       onChange={handleChangePage}
     >
-      <ToggleButton className="toogle-option" value="All">All</ToggleButton>
-      <ToggleButton className="toogle-option" value="Favs">My Favs</ToggleButton>
+      <ToggleButton className="toogle-option" value="All">All news</ToggleButton>
+      <ToggleButton className="toogle-option" value="Faves">My Faves</ToggleButton>
     </ToggleButtonGroup>
   );
 };

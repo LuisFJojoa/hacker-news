@@ -6,17 +6,6 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
 export const HackerNewsGrid = () => {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: "#fff",
-    ...theme.typography.body2,
-    opacity: 0.8,
-    borderRadius: "6px",
-    border: "solid 1px #979797",
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
 
   return (
     <>

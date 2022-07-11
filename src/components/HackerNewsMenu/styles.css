@@ -1,7 +1,8 @@
 .toogle-option{
+  text-transform: capitalize !important; 
   font-weight: 500;
   font-size: 10px !important;
   line-height: 20px !important;
-  padding: 0em 4em !important;
+  padding: 0em 3em !important;
   margin-top: 1em !important;
 }
