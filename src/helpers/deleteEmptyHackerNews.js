@@ -10,9 +10,7 @@ export const deleteEmptyNews = async (tempHackerNews) => {
       );
     }
   );
-  console.log(fullHackerNews);
   const finalHackerNews = deleteHackerNewsDuplicated(fullHackerNews);
-  console.log(finalHackerNews);
   return finalHackerNews;
 };
 

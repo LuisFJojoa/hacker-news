@@ -8,6 +8,7 @@ import emptyFavSvg from "../../assets/svg/iconmonstr-favorite-2_4.svg";
 import fullFavSvg from "../../assets/svg/iconmonstr-favorite-3.svg";
 
 export const HackerNewsItem = ({ title, created_at, author, story }) => {
+  
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: "#fff",
     ...theme.typography.body2,

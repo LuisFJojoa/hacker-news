@@ -2,15 +2,15 @@ import "./styles.css";
 import { HackerNewsItem } from "..";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { useFetchHackerNews } from "../../hooks/useFetchHackerNews";
+import { HackerNewsAppContext } from "../../context/HackerNewsAppContext";
+import { useContext, useEffect } from "react";
 
-export const HackerNewsGrid = ({ techCategory }) => {
-  const { hackerNews, isLoading } = useFetchHackerNews(techCategory);
+export const HackerNewsGrid = ( ) => {
+  const {hackerNews} = useContext(HackerNewsAppContext)
 
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        {isLoading && <h2>Cargando...</h2>}
         <Grid
           container
           direction="row"
@@ -23,6 +23,7 @@ export const HackerNewsGrid = ({ techCategory }) => {
             hackerNews.map((hackerNew) => (
               <HackerNewsItem key={hackerNew.id} {...hackerNew} />
             ))}
+            {}
         </Grid>
       </Box>
     </>

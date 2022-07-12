@@ -1,11 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { HackerNewsApp } from './components/HackerNewsApp/HackerNewsApp'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HackerNewsApp } from "./components/HackerNewsApp/HackerNewsApp";
+import { HackerNewsAppProvider } from "./context/HackerNewsAppContext";
 
-import './styles.css'
+import "./styles.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HackerNewsApp />
+    <HackerNewsAppProvider>
+      <HackerNewsApp />
+    </HackerNewsAppProvider>
   </React.StrictMode>
-)
+);
