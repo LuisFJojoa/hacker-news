@@ -6,7 +6,6 @@ import { useFetchHackerNews } from "../../hooks/useFetchHackerNews";
 import { usePagination } from "../../hooks/usePagination";
 export const HackerNewsPagination = () => {
   const { hackerNews, totalHackerNews } = useContext(HackerNewsAppContext);
-  console.log(hackerNews);
   let [page, setPage] = useState(1);
   const PER_PAGE = 8;
   const count = Math.round(totalHackerNews / PER_PAGE);

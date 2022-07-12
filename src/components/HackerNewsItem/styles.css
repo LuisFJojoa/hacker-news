@@ -57,5 +57,9 @@ p {
 
 .item-new:hover{
   opacity: 50%;
+}
+
+a{
+  text-decoration: none;
   cursor: pointer;
 }
