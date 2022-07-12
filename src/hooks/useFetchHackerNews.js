@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { HackerNewsAppContext } from "../context/HackerNewsAppContext";
+import HackerNewsAppContext from "../context/HackerNewsAppContext";
 import { getHackerNews } from "../helpers/getHackerNews";
 
 export const useFetchHackerNews = (techCategory, page) => {
@@ -12,14 +12,15 @@ export const useFetchHackerNews = (techCategory, page) => {
       type: "UPDATE_HACKER_NEWS",
       hackerNews:  hackerNews,
       totalHackerNews: totalHackerNews ,
+      isLoading: isLoading
     });
   };
 
   const getNews = async () => {
     const {finalHackerNews, totalHackerNews} = await getHackerNews(techCategory, page);
     setHackerNews(finalHackerNews);
-    onDispatch(totalHackerNews);
     setIsLoading(false);
+    onDispatch(totalHackerNews);
   };
 
   useEffect(() => {

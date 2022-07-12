@@ -6,7 +6,7 @@ import { useFetchHackerNews } from "../../hooks/useFetchHackerNews";
 export const HackerNewsApp = () => {
   const [techCategory, setTechCategory] = useState("angular");
   const [page, setPage] = useState(0)
-  const { hackerNews, isLoading } = useFetchHackerNews(techCategory, page);
+  useFetchHackerNews(techCategory, page);
   return (
     <>
         <Grid
@@ -18,13 +18,9 @@ export const HackerNewsApp = () => {
           <Grid container>
             <HackerNewsHeader />
           </Grid>
-          {isLoading
-          ? <h1>Loading...</h1>
-          :<Grid container>
-            <HackerNewsBody
-             {...hackerNews}/>
+          <Grid container>
+            <HackerNewsBody/>
           </Grid>
-          }
         </Grid>        
     </>
   );

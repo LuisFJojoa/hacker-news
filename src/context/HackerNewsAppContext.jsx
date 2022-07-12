@@ -1,17 +1,9 @@
 import { useReducer, createContext } from "react";
 
 const initialState = {
-  hackerNews: [
-    {
-      id: 32043728,
-      title: "We Need to Stop Pretending we can Limit Global Warming to 1.5°C",
-      author: "kkfx",
-      created_at: "2022-07-10T15:40:28.000Z",
-      url: "https://bylinetimes.com/2022/07/06/we-need-to-stop-pretending-we-can-limit-global-warming-to-1-5c/",
-    },
-  ],
+  hackerNews: [],
   totalHackerNews: 0,
-
+  isLoading: true
 };
 
 export const HackerNewsAppContext = createContext();
@@ -24,7 +16,8 @@ export const HackerNewsAppProvider = (props) => {
       value={{
         hackerNews: state.hackerNews,
         totalHackerNews: state.totalHackerNews,
-        dispatch,
+        isLoading:state.isLoading,
+        dispatch
       }}
     >
       {props.children}
@@ -38,10 +31,12 @@ const AppReducer = (state, action) => {
     case "UPDATE_HACKER_NEWS":
       const hackerNews = action.hackerNews
       const totalHackerNews = action.totalHackerNews
+      const isLoading = action.isLoading
       return {
         ...state,
         hackerNews: hackerNews,
-        totalHackerNews: totalHackerNews
+        totalHackerNews: totalHackerNews,
+        isLoading:isLoading
       }
     //   };
     // case "DELETE_EXPENSE":

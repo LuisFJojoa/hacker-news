@@ -2,12 +2,9 @@ import "./styles.css";
 import { HackerNewsItem } from "..";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { HackerNewsAppContext } from "../../context/HackerNewsAppContext";
-import { useContext, useEffect } from "react";
 
-export const HackerNewsGrid = ( ) => {
-  const {hackerNews} = useContext(HackerNewsAppContext)
-
+export const HackerNewsGrid = ( {hackerNews} ) => {
+  
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -19,8 +16,8 @@ export const HackerNewsGrid = ( ) => {
           columnSpacing={{ xs: 2, sm: 4, md: 8, lg: 8 }}
           columns={{ xs: 10, sm: 10, md: 14, lg: 16 }}
         >
-          {hackerNews &&
-            hackerNews.map((hackerNew) => (
+          {
+          hackerNews && hackerNews.map((hackerNew) => (
               <HackerNewsItem key={hackerNew.id} {...hackerNew} />
             ))}
             {}

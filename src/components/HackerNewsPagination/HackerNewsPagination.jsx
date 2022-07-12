@@ -1,20 +1,24 @@
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useState, useContext } from "react";
-import { HackerNewsAppContext } from "../../context/HackerNewsAppContext";
+import { useState, useContext, useEffect } from "react";
+import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 import { useFetchHackerNews } from "../../hooks/useFetchHackerNews";
 import { usePagination } from "../../hooks/usePagination";
 export const HackerNewsPagination = () => {
   const { hackerNews, totalHackerNews } = useContext(HackerNewsAppContext);
-
+  console.log(hackerNews);
   let [page, setPage] = useState(1);
-  const PER_PAGE = 12;
-  const count = 1;//Math.round(totalHackerNews / PER_PAGE);
-  const _HACKERNEWS = usePagination(hackerNews, PER_PAGE, 50);
-  // const _HACKERNEWS = usePagination(hackerNews, PER_PAGE, totalHackerNews);
+  const PER_PAGE = 8;
+  const count = Math.round(totalHackerNews / PER_PAGE);
+  //}} const _HACKERNEWS = usePagination(hackerNews, PER_PAGE, 50);
+  const _HACKERNEWS = usePagination(hackerNews, PER_PAGE, totalHackerNews);
+
+  // useEffect(() => {
+  //   if (page!==1) useFetchHackerNews("React", page); // DESCOMENTAAAAAAAAR
+  // }, [page]);
+
   const handleChange = (e, p) => {
     setPage(p);
-    //useFetchHackerNews("React", page); DESCOMENTAAAAAAAAR
     _HACKERNEWS.jump(p);
   };
   return (

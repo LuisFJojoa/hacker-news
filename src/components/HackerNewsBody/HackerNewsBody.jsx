@@ -1,9 +1,12 @@
 import { HackerNewsGrid, HackerNewsMenu, HackerNewsDropbox, HackerNewsPagination } from "../";
 
 import Box from "@mui/material/Box";
+import { useContext } from "react";
+import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
-export const HackerNewsBody = ({techCategory}) => {
-  
+export const HackerNewsBody = () => {
+  const {hackerNews, isLoading} = useContext(HackerNewsAppContext)
+  console.log(isLoading);
   return (
     <>
       <Box>
@@ -13,18 +16,25 @@ export const HackerNewsBody = ({techCategory}) => {
             <HackerNewsDropbox />
           </div>
         </Box>
-        <Box>
-          <HackerNewsGrid techCategory={techCategory}/>
-        </Box>
-        <Box sx = {{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        >
-          <HackerNewsPagination />
-        </Box>
+
+        {
+          isLoading 
+          ? <h1>Loading...</h1>
+          :
+          <><Box>
+              <HackerNewsGrid hackerNews={[...hackerNews]}/>
+            </Box>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+            >
+                <HackerNewsPagination />
+              </Box></>
+        }
+        
       </Box>
     </>
   );
