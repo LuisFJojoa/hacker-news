@@ -1,14 +1,17 @@
 import "./styles.css";
 import { HackerNewsItem } from "..";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import { useFetchHackerNews } from "../../hooks/useFetchHackerNews";
 
-export const HackerNewsGrid = () => {
+export const HackerNewsGrid = ({ techCategory }) => {
+  const { hackerNews, isLoading } = useFetchHackerNews(techCategory);
 
   return (
     <>
+      <h3>{techCategory}</h3>
+      {isLoading && <h2>Cargando...</h2>}
+
       <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
@@ -18,14 +21,10 @@ export const HackerNewsGrid = () => {
           columnSpacing={{ xs: 2, sm: 4, md: 8, lg: 8 }}
           columns={{ xs: 10, sm: 10, md: 14, lg: 16 }}
         >
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
-          <HackerNewsItem title="All the fundamental React.js concepts, jammed this single Medium article (updated August 2019)" />
+          {hackerNews &&
+            hackerNews.map((hackerNew) => (
+              <HackerNewsItem key={hackerNew.id} {...hackerNew} />
+            ))}
         </Grid>
       </Box>
     </>

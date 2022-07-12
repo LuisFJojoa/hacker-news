@@ -1,7 +1,9 @@
 import { HackerNewsHeader, HackerNewsBody } from "../";
 import Grid from "@mui/material/Grid";
+import { useState } from "react";
 
 export const HackerNewsApp = () => {
+  const [techCategory, setTechCategory] = useState("angular");
   return (
     <>
       <Grid
@@ -15,7 +17,7 @@ export const HackerNewsApp = () => {
         </Grid>
 
         <Grid container>
-          <HackerNewsBody />
+          <HackerNewsBody techCategory={techCategory} />
         </Grid>
       </Grid>
     </>

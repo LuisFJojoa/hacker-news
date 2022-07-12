@@ -2,7 +2,7 @@ import { HackerNewsGrid, HackerNewsMenu, HackerNewsDropbox, HackerNewsPagination
 
 import Box from "@mui/material/Box";
 
-export const HackerNewsBody = () => {
+export const HackerNewsBody = ({techCategory}) => {
   
   return (
     <>
@@ -14,7 +14,7 @@ export const HackerNewsBody = () => {
           </div>
         </Box>
         <Box>
-          <HackerNewsGrid />
+          <HackerNewsGrid techCategory={techCategory}/>
         </Box>
         <Box sx = {{
           display: "flex",
@@ -23,7 +23,7 @@ export const HackerNewsBody = () => {
           alignItems: "center",
         }}
         >
-          <HackerNewsPagination/>
+          <HackerNewsPagination />
         </Box>
       </Box>
     </>
