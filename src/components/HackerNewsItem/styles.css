@@ -54,3 +54,7 @@ p {
   flex-direction: row;
   align-items: center;
 }
+
+.item-new:hover{
+  opacity: 50%;
+}

@@ -9,10 +9,8 @@ export const HackerNewsGrid = ({ techCategory }) => {
 
   return (
     <>
-      <h3>{techCategory}</h3>
-      {isLoading && <h2>Cargando...</h2>}
-
       <Box sx={{ flexGrow: 1 }}>
+        {isLoading && <h2>Cargando...</h2>}
         <Grid
           container
           direction="row"

@@ -23,12 +23,12 @@ export const HackerNewsItem = ({ title, created_at, author, story }) => {
   return (
     <>
       <Grid item xs={8} sm={8} md={6} lg={6}>
-        <Item>
+        <Item className="item-new">
           <div className="new-card">
             <div className="text-news">
               <div className="created-field">
                 <img src={clockSvg} width="16" height="16" />
-                <p className="created-date-autor">`${created} `</p>
+                <p className="created-date-autor">${created_at} by ${author}  </p>
               </div>
               <div className="title-box">
                 <span className="new-title">{title}</span>
