@@ -12,7 +12,9 @@ export const useFetchHackerNews = (techCategory, page) => {
       type: "UPDATE_HACKER_NEWS",
       hackerNews:  hackerNews,
       totalHackerNews: totalHackerNews ,
-      isLoading: isLoading
+      isLoading: isLoading,
+      page: page,
+      techCategory: techCategory
     });
   };
 
@@ -25,7 +27,7 @@ export const useFetchHackerNews = (techCategory, page) => {
 
   useEffect(() => {
     getNews();
-  }, []);
+  }, [techCategory, page]);
 
   return {
     hackerNews,

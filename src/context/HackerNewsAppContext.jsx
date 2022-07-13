@@ -3,7 +3,9 @@ import { useReducer, createContext } from "react";
 const initialState = {
   hackerNews: [],
   totalHackerNews: 0,
-  isLoading: true
+  isLoading: true,
+  page: 1,
+  techCategory: "React"
 };
 
 export const HackerNewsAppContext = createContext();
@@ -17,6 +19,8 @@ export const HackerNewsAppProvider = (props) => {
         hackerNews: state.hackerNews,
         totalHackerNews: state.totalHackerNews,
         isLoading:state.isLoading,
+        page: state.page,
+        techCategory: state.techCategory,
         dispatch
       }}
     >
@@ -29,22 +33,27 @@ const AppReducer = (state, action) => {
  
   switch (action.type) {
     case "UPDATE_HACKER_NEWS":
-      const hackerNews = action.hackerNews
-      const totalHackerNews = action.totalHackerNews
-      const isLoading = action.isLoading
+      
       return {
         ...state,
-        hackerNews: hackerNews,
-        totalHackerNews: totalHackerNews,
-        isLoading:isLoading
+        hackerNews:  action.hackerNews,
+        totalHackerNews:  action.totalHackerNews,
+        isLoading: action.isLoading,
+        page: action.page,
+        techCategory: action.techCategory
       }
-    //   };
-    // case "DELETE_EXPENSE":
-    //   return {
-    //     ...state,
-    //     expenses: state.expenses.filter(
-    //       (expense) => expense.id !== action.payload
-    //     ),
+    
+    case "UPDATE_PAGE":
+      return{
+        ...state,
+        page: action.page
+      }
+
+      case "UPDATE_CATEGORY":
+        return{
+          ...state,
+          techCategory: action.techCategory
+        }
 
     default:
       return state;

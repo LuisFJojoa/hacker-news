@@ -2,11 +2,12 @@ import { HackerNewsGrid, HackerNewsMenu, HackerNewsDropbox, HackerNewsPagination
 
 import Box from "@mui/material/Box";
 import { useContext } from "react";
+import { useFetchHackerNews } from "../../hooks/useFetchHackerNews";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
 export const HackerNewsBody = () => {
-  const {hackerNews, isLoading} = useContext(HackerNewsAppContext)
-  console.log(isLoading);
+  const {techCategory, page} = useContext(HackerNewsAppContext)
+  const {hackerNews, isLoading} = useFetchHackerNews(techCategory, page)
   return (
     <>
       <Box>

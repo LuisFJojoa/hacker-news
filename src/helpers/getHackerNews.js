@@ -4,7 +4,6 @@ import { deleteEmptyNews } from "./deleteEmptyHackerNews";
 export const getHackerNews = async (techCategory, page) => {
   const url = `https://hn.algolia.com/api/v1/search_by_date?query=${techCategory}&page=${page}&hitsPerPage=12`;
   const request = await fetch(url);
-  // console.log(request.json());
 
   const { hits, nbHits:totalHackerNews} = await request.json();
   const hackerNews = hits.map((hit) => ({
@@ -14,7 +13,6 @@ export const getHackerNews = async (techCategory, page) => {
     created_at: hit.created_at,
     url: hit.story_url,
   }));
-  
   const finalHackerNews = await deleteEmptyNews(hackerNews);
   return {finalHackerNews, totalHackerNews };
 };

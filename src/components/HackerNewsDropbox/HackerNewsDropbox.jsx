@@ -1,20 +1,29 @@
+import { useContext, useEffect, useState } from "react";
+
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
+
+import "./styles.css";
 import angularIcon from "../../assets/png/image-138@2x.png";
 import reactIcon from "../../assets/png/image-140@2x.png";
 import vueIcon from "../../assets/png/image-141@2x.png";
-import "./styles.css";
-
-import { useState } from "react";
+import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
 export const HackerNewsDropbox = () => {
-  const [techChoosen, setTechChoosen] = useState("");
+  const {dispatch, techCategory} = useContext(HackerNewsAppContext)
 
-  const handleChangeNews = ({ target }) => {
-    setTechChoosen(target.value);
+  const onDispatch = (techCategory) => {
+    dispatch({
+      type: "UPDATE_CATEGORY",
+      techCategory: techCategory
+    });
+  };
+
+  const handleChangeNews = ({target:{value}}) => {
+    onDispatch(value)
   };
 
   return (
@@ -32,58 +41,76 @@ export const HackerNewsDropbox = () => {
       <Select
         labelId="demo-select-small"
         id="demo-select-small"
-        value={techChoosen}
+        value={techCategory}
         label="techChoosen"
         onChange={handleChangeNews}
       >
-        <MenuItem value="angular">
+        <MenuItem value="Angular">
           <Box
             component="img"
             sx={{
-              height: 18,
-              width: 16,
+              height: "18px",
+              width: "16px",
               fontSize: "14px",
-              fontWeight: "400",
+              fontWeigth: "400",
               textAlign: "center",
               mr: 1.5,
             }}
-            alt="Angular icon"
+            alt={`Angular icon`}
             src={angularIcon}
           />
           Angular
         </MenuItem>
-        <MenuItem value="react">
+        <MenuItem value="React">
           <Box
             component="img"
             sx={{
-              height: 12,
-              width: 16,
+              height: "12px",
+              width: "16px",
               fontSize: "14px",
-              fontWeight: "400",
+              fontWeigth: "400",
               textAlign: "center",
               mr: 1.5,
             }}
-            alt=" icon"
+            alt={`React icon`}
             src={reactIcon}
           />
           React
         </MenuItem>
-        <MenuItem value="vue">
+        <MenuItem value="Vue">
           <Box
             component="img"
             sx={{
-              height: 14,
-              width: 16,
+              height: "14px",
+              width: "16px",
               fontSize: "14px",
-              fontWeight: "400",
+              fontWeigth: "400",
               textAlign: "center",
               mr: 1.5,
             }}
-            alt="Angular icon"
+            alt={`Vue icon`}
             src={vueIcon}
           />
           Vue
         </MenuItem>
+        {/* {TECH_CATEGORIES.map((techCategory, { svg, heigth, width }) => {
+          <MenuItem value={techCategory}>
+            <Box
+              component="img"
+              sx={{
+                height: { heigth },
+                width: { width },
+                fontSize: "14px",
+                fontWeigth: "400",
+                textAlign: "center",
+                mr: 1.5,
+              }}
+              alt={`${techCategory} icon`}
+              src={svg}
+            />
+            {techCategory}
+          </MenuItem>
+        })} */}
       </Select>
     </FormControl>
   );

@@ -1,4 +1,3 @@
-import "./styles.css";
 import { HackerNewsItem } from "..";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -20,7 +19,6 @@ export const HackerNewsGrid = ( {hackerNews} ) => {
           hackerNews && hackerNews.map((hackerNew) => (
               <HackerNewsItem key={hackerNew.id} {...hackerNew} />
             ))}
-            {}
         </Grid>
       </Box>
     </>
