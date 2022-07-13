@@ -13,17 +13,26 @@ import vueIcon from "../../assets/png/image-141@2x.png";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
 export const HackerNewsDropbox = () => {
-  const {dispatch, techCategory} = useContext(HackerNewsAppContext)
+  const { dispatch, techCategory, totalHackerNews, page, hackerNews } =
+    useContext(HackerNewsAppContext);
 
   const onDispatch = (techCategory) => {
     dispatch({
       type: "UPDATE_CATEGORY",
-      techCategory: techCategory
+      techCategory: techCategory,
+      page: 1,
     });
+    localStorage.setItem(
+      "oldData",
+      JSON.stringify({
+        page: 1,
+        techCategory: techCategory,
+      })
+    );
   };
 
-  const handleChangeNews = ({target:{value}}) => {
-    onDispatch(value)
+  const handleChangeNews = ({ target: { value } }) => {
+    onDispatch(value);
   };
 
   return (

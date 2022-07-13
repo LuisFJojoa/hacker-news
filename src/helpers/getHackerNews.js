@@ -2,10 +2,10 @@ import { deleteEmptyNews } from "./deleteEmptyHackerNews";
 
 
 export const getHackerNews = async (techCategory, page) => {
-  const url = `https://hn.algolia.com/api/v1/search_by_date?query=${techCategory}&page=${page}&hitsPerPage=12`;
+  const url = `https://hn.algolia.com/api/v1/search_by_date?query=${techCategory}&page=${page-1}&hitsPerPage=10`;
   const request = await fetch(url);
 
-  const { hits, nbHits:totalHackerNews} = await request.json();
+  const { hits, nbPages:totalHackerNews} = await request.json();
   const hackerNews = hits.map((hit) => ({
     id: hit.story_id,
     title: hit.story_title,

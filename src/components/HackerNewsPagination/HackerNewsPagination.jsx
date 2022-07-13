@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
@@ -6,23 +6,28 @@ import { usePagination } from "../../hooks/usePagination";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
 export const HackerNewsPagination = () => {
-  
-  const [page, setPage] = useState(1);
-  const { dispatch, hackerNews, totalHackerNews } = useContext(HackerNewsAppContext);
-  const PER_PAGE = 12;
+  const { dispatch, hackerNews, totalHackerNews, techCategory, page } =
+    useContext(HackerNewsAppContext);
+  const PER_PAGE = 8;
   const count = Math.round(totalHackerNews / PER_PAGE);
   const _HACKERNEWS = usePagination(hackerNews, PER_PAGE, totalHackerNews);
 
-  const onDispatch = (page) => {
+  const onDispatch = (nextPage) => {
     dispatch({
       type: "UPDATE_PAGE",
-      page: page
+      page: nextPage,
     });
+    localStorage.setItem(
+      "oldData",
+      JSON.stringify({
+        page: nextPage,
+        techCategory: techCategory,
+      })
+    );
   };
-  const handleChange = (evt, page) => {
-    setPage(page);
-    onDispatch(page)
-    _HACKERNEWS.jump(page);
+  const handleChange = (evt, nextPage) => {
+    onDispatch(nextPage);
+    _HACKERNEWS.jump(nextPage);
   };
   return (
     <Stack
