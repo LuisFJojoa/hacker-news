@@ -72,17 +72,25 @@ const AppReducer = (state, action) => {
     case "UPDATE_FAV":
       return {
         ...state,
-        favsHackerNews: [...state.favsHackerNews, action.favHackerNew],
-        hackerNews: action.hackerNews,
+        favsHackerNews: [...state.favsHackerNews, action.favHackerNew]
       };
+
+      case "UPDATE_STATE_FAV":
+        return {
+          ...state,
+          favsHackerNews: state.favsHackerNews.map(f =>
+            f.id === action.id
+              ? { ...f, favState: true}
+              : f
+          )
+        };
 
     case "DELETE_FAV":
       return {
         ...state,
         favsHackerNews: state.favsHackerNews.filter(
           (favHackerNew) => favHackerNew.id !== action.idToDelete
-        ),
-        hackerNews: action.hackerNews,
+        )
       };
 
     case "CHANGE_PAGE":

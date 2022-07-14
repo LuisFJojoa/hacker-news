@@ -14,16 +14,16 @@ export const HackerNewsMenu = () => {
       type: "CHANGE_PAGE",
       isAllNews: pageMenu === "All" ? false : true,
     });
-    localStorage.setItem(
-      "oldData",
-      JSON.stringify({
-        hackerNews: hackerNews,
-        page: page,
-        techCategory: techCategory,
-        favsHackerNews: favsHackerNews,
-        isAllNews: isAllNews,
-      })
-    );
+    // localStorage.setItem(
+    //   "oldData",
+    //   JSON.stringify({
+    //     hackerNews: hackerNews,
+    //     page: page,
+    //     techCategory: techCategory,
+    //     favsHackerNews: favsHackerNews,
+    //     isAllNews: isAllNews,
+    //   })
+    // );
   };
 
   const handleChangePage = ({ target }, newPage) => {
@@ -66,7 +66,7 @@ export const HackerNewsMenu = () => {
           px: {xs:"2.5em", sm: "3.5em", md: "3em", lg: "4em"},
           py: {xs: 1, sm: 0.5, md: 0.5, lg: 0.5}
         }}
-        disabled={!(favsHackerNews.length > 3)}
+        disabled={!(favsHackerNews.length > 4)}
         value="Faves"
       >
         Faves

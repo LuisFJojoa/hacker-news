@@ -14,7 +14,7 @@ import fullFavSvg from "../../assets/svg/iconmonstr-favorite-3.svg";
 
 export const HackerNewsItem = (hackerNew) => {
   const { title, created_at, author, url, favState } = hackerNew;
-  const [svgIcon, setSvgIcon] = useState(emptyFavSvg);
+  const [svgIcon, setSvgIcon] = useState();
   const { dispatch, page, techCategory, favsHackerNews, hackerNews } =
     useContext(HackerNewsAppContext);
 
@@ -23,31 +23,30 @@ export const HackerNewsItem = (hackerNew) => {
   }, []);
 
   const onAddFav = (evt) => {
-    evt.preventDefault(); // this line prevents changing to the URL of the link href
-    evt.stopPropagation(); // this line prevents the link click from bubbling
-    setSvgIcon(!favState ? fullFavSvg : emptyFavSvg);
+    evt.preventDefault(); 
+    evt.stopPropagation(); 
+    setSvgIcon(favState ?  emptyFavSvg: fullFavSvg);
     onDispatch();
   };
 
   const onDispatch = () => {
-    const elementIndex = hackerNews.findIndex((obj) => obj.id == hackerNew.id);
-    hackerNews[elementIndex].favState = !favState;
 
     if (!favState) {
-      console.log("UPADTE FAV");
       dispatch({
         type: "UPDATE_FAV",
         favHackerNew: hackerNew,
-        hackerNews: hackerNews,
-        favState: true,
+        favsHackerNews: favsHackerNews
       });
+
+      dispatch({
+        type: "UPDATE_STATE_FAV",
+        id: hackerNew.id
+      })
+      
     } else {
-      console.log("DELETE FAV");
       dispatch({
         type: "DELETE_FAV",
-        idToDelete: hackerNew.id,
-        hackerNews: hackerNews,
-        favState: true,
+        idToDelete: hackerNew.id
       });
     }
 
