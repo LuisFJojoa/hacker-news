@@ -6,7 +6,7 @@ import { usePagination } from "../../hooks/usePagination";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
 export const HackerNewsPagination = () => {
-  const { dispatch, hackerNews, totalHackerNews, techCategory, page } =
+  const { dispatch, hackerNews, totalHackerNews, techCategory, page, favsHackerNews } =
     useContext(HackerNewsAppContext);
   const PER_PAGE = 8;
   const count = Math.round(totalHackerNews / PER_PAGE);
@@ -20,8 +20,11 @@ export const HackerNewsPagination = () => {
     localStorage.setItem(
       "oldData",
       JSON.stringify({
+        hackerNews: hackerNews,
         page: nextPage,
         techCategory: techCategory,
+        favsHackerNews: favsHackerNews,
+        isAllNews: true
       })
     );
   };

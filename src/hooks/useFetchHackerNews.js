@@ -3,26 +3,26 @@ import HackerNewsAppContext from "../context/HackerNewsAppContext";
 import { getHackerNews } from "../helpers/getHackerNews";
 
 export const useFetchHackerNews = (techCategory, page) => {
-  const { dispatch } = useContext(HackerNewsAppContext);
-  const [hackerNews, setHackerNews] = useState([]);
+  const { dispatch, hackerNews } = useContext(HackerNewsAppContext);
   const [isLoading, setIsLoading] = useState(true);
 
-  const onDispatch = ( totalHackerNews) => {
+  const onDispatch = (finalHackerNews, totalHackerNews) => {
+  
     dispatch({
       type: "UPDATE_HACKER_NEWS",
-      hackerNews:  hackerNews,
+      hackerNews:  finalHackerNews,
       totalHackerNews: totalHackerNews ,
       isLoading: isLoading,
       page: page,
-      techCategory: techCategory
+      techCategory: techCategory,
+      isAllNews: true
     });
   };
 
   const getNews = async () => {
     const {finalHackerNews, totalHackerNews} = await getHackerNews(techCategory, page);
-    setHackerNews(finalHackerNews);
     setIsLoading(false);
-    onDispatch(totalHackerNews);
+    onDispatch([...finalHackerNews],totalHackerNews);
   };
 
   useEffect(() => {

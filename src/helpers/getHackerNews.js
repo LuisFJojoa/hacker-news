@@ -12,6 +12,7 @@ export const getHackerNews = async (techCategory, page) => {
     author: hit.author,
     created_at: hit.created_at,
     url: hit.story_url,
+    favState: false
   }));
   const finalHackerNews = await deleteEmptyNews(hackerNews);
   return {finalHackerNews, totalHackerNews };

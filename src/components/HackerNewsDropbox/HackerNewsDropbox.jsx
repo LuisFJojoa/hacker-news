@@ -13,20 +13,23 @@ import vueIcon from "../../assets/png/image-141@2x.png";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
 export const HackerNewsDropbox = () => {
-  const { dispatch, techCategory, totalHackerNews, page, hackerNews } =
+  const { dispatch, techCategory, hackerNews, favsHackerNews } =
     useContext(HackerNewsAppContext);
 
-  const onDispatch = (techCategory) => {
+  const onDispatch = (tCategory) => {
     dispatch({
       type: "UPDATE_CATEGORY",
-      techCategory: techCategory,
+      techCategory: tCategory,
       page: 1,
     });
     localStorage.setItem(
       "oldData",
       JSON.stringify({
+        hackerNews: [],
         page: 1,
-        techCategory: techCategory,
+        techCategory: tCategory,
+        favsHackerNews: favsHackerNews,
+        isAllnews: true
       })
     );
   };
@@ -102,24 +105,6 @@ export const HackerNewsDropbox = () => {
           />
           Vue
         </MenuItem>
-        {/* {TECH_CATEGORIES.map((techCategory, { svg, heigth, width }) => {
-          <MenuItem value={techCategory}>
-            <Box
-              component="img"
-              sx={{
-                height: { heigth },
-                width: { width },
-                fontSize: "14px",
-                fontWeigth: "400",
-                textAlign: "center",
-                mr: 1.5,
-              }}
-              alt={`${techCategory} icon`}
-              src={svg}
-            />
-            {techCategory}
-          </MenuItem>
-        })} */}
       </Select>
     </FormControl>
   );

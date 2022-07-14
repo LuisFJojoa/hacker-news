@@ -1,17 +1,75 @@
-import "./styles.css";
+import { useContext, useEffect, useState } from "react";
 
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+
+import "./styles.css";
+import { getHoursToCreated } from "../../helpers/convertDateToHours";
+import HackerNewsAppContext from "../../context/HackerNewsAppContext";
+
 import clockSvg from "../../assets/svg/iconmonstr-time-2_8.svg";
 import emptyFavSvg from "../../assets/svg/iconmonstr-favorite-2_4.svg";
 import fullFavSvg from "../../assets/svg/iconmonstr-favorite-3.svg";
-import { getHoursToCreated } from "../../helpers/convertDateToHours";
 
-export const HackerNewsItem = ({ title, created_at, author, url }) => {
+export const HackerNewsItem = (hackerNew) => {
+  const { title, created_at, author, url, favState } = hackerNew;
+  const [svgIcon, setSvgIcon] = useState(emptyFavSvg);
+  const { dispatch, page, techCategory, favsHackerNews, hackerNews } = useContext(HackerNewsAppContext);
+  
+
+  useEffect(() => {
+    setSvgIcon(favState ? fullFavSvg : emptyFavSvg)
+  },[])
+  
+
+  const onAddFav = (evt) => {
+    evt.preventDefault(); // this line prevents changing to the URL of the link href
+    evt.stopPropagation(); // this line prevents the link click from bubbling
+    setSvgIcon(!favState ? fullFavSvg : emptyFavSvg);
+    onDispatch();
+  };
+
+  const onDispatch = () => {
+    const elementIndex = hackerNews.findIndex((obj) => obj.id == hackerNew.id);
+    hackerNews[elementIndex].favState = !favState;
+
+    if (!favState) {
+      console.log("UPADTE FAV");
+      dispatch({
+        type: "UPDATE_FAV",
+        favHackerNew: hackerNew,
+        hackerNews: hackerNews,
+        favState: true
+      });
+    } else {
+      console.log("DELETE FAV");
+      dispatch({
+        type: "DELETE_FAV",
+        idToDelete: hackerNew.id,
+        hackerNews: hackerNews,
+        favState: true,
+      });
+    }
+
+    localStorage.setItem(
+      "oldData",
+      JSON.stringify({
+        hackerNews: hackerNews,
+        page: page,
+        techCategory: techCategory,
+        favsHackerNews: !favState
+          ? [...favsHackerNews, hackerNew]
+          : favsHackerNews.filter(
+              (favHackerNew) => favHackerNew.id !== hackerNew.id
+            ),
+        isAllNews: true
+      })
+    );
+  };
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: "#fff",
-    ...theme.typography.body2,
     opacity: 0.8,
     borderRadius: "6px",
     border: "solid 1px #979797",
@@ -24,7 +82,7 @@ export const HackerNewsItem = ({ title, created_at, author, url }) => {
   return (
     <>
       <Grid item xs={8} sm={8} md={6} lg={6}>
-        <a href={`${url}`} target="_blank" >
+        <a href={`${url}`} target="_blank">
           <Item className="item-new">
             <div className="new-card">
               <div className="text-news">
@@ -39,12 +97,13 @@ export const HackerNewsItem = ({ title, created_at, author, url }) => {
                 </div>
               </div>
               <div>
-                <p className="box-shadow">
+                <p id="box-shadow">
                   <img
-                    className="fav-icon"
-                    src={emptyFavSvg}
-                    width="24"
-                    height="22"
+                    onClick={onAddFav}
+                    id="fav-icon"
+                    src={svgIcon}
+                    width="24px"
+                    height="22px"
                   />
                 </p>
               </div>
