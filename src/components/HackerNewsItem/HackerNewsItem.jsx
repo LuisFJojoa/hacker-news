@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
-import "./styles.css";
+import "/styles.css";
 import { getHoursToCreated } from "../../helpers/convertDateToHours";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 

@@ -3,7 +3,6 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useContext } from "react";
 import { useState } from "react";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
-import "./styles.css";
 
 export const HackerNewsMenu = () => {
   const { dispatch, isAllNews, favsHackerNews } =
