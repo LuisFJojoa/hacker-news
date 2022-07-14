@@ -15,13 +15,12 @@ import fullFavSvg from "../../assets/svg/iconmonstr-favorite-3.svg";
 export const HackerNewsItem = (hackerNew) => {
   const { title, created_at, author, url, favState } = hackerNew;
   const [svgIcon, setSvgIcon] = useState(emptyFavSvg);
-  const { dispatch, page, techCategory, favsHackerNews, hackerNews } = useContext(HackerNewsAppContext);
-  
+  const { dispatch, page, techCategory, favsHackerNews, hackerNews } =
+    useContext(HackerNewsAppContext);
 
   useEffect(() => {
-    setSvgIcon(favState ? fullFavSvg : emptyFavSvg)
-  },[])
-  
+    setSvgIcon(favState ? fullFavSvg : emptyFavSvg);
+  }, []);
 
   const onAddFav = (evt) => {
     evt.preventDefault(); // this line prevents changing to the URL of the link href
@@ -40,7 +39,7 @@ export const HackerNewsItem = (hackerNew) => {
         type: "UPDATE_FAV",
         favHackerNew: hackerNew,
         hackerNews: hackerNews,
-        favState: true
+        favState: true,
       });
     } else {
       console.log("DELETE FAV");
@@ -63,7 +62,7 @@ export const HackerNewsItem = (hackerNew) => {
           : favsHackerNews.filter(
               (favHackerNew) => favHackerNew.id !== hackerNew.id
             ),
-        isAllNews: true
+        isAllNews: true,
       })
     );
   };
@@ -73,10 +72,10 @@ export const HackerNewsItem = (hackerNew) => {
     opacity: 0.8,
     borderRadius: "6px",
     border: "solid 1px #979797",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(0.5),
     marginBottom: theme.spacing(2),
     paddingLeft: theme.spacing(2),
-    textAlign: "left",
+    textAlign: "left"
   }));
 
   return (

@@ -44,8 +44,7 @@ export const HackerNewsPagination = () => {
         variant="outlined"
         shape="rounded"
         page={page}
-        showFirstButton
-        showLastButton
+        size="small"
         color="primary"
         onChange={handleChange}
       />

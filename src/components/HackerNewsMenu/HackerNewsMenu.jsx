@@ -6,29 +6,30 @@ import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 import "./styles.css";
 
 export const HackerNewsMenu = () => {
-  const {dispatch, isAllNews, favsHackerNews } = useContext(HackerNewsAppContext)
-  const [pageMenu, setPageMenu] = useState((isAllNews)?"All":"Faves");
+  const { dispatch, isAllNews, favsHackerNews } =
+    useContext(HackerNewsAppContext);
+  const [pageMenu, setPageMenu] = useState(isAllNews ? "All" : "Faves");
   const onDispatch = () => {
     dispatch({
       type: "CHANGE_PAGE",
-      isAllNews: (pageMenu==="All") ? false: true
+      isAllNews: pageMenu === "All" ? false : true,
     });
-    // localStorage.setItem(
-    //   "oldData",
-    //   JSON.stringify({
-    //     hackerNews: hackerNews,
-    //     page: page,
-    //     techCategory: techCategory,
-    //     favsHackerNews: favsHackerNews,
-    //     isAllNews: isAllNews
-    //   })
-    // );
+    localStorage.setItem(
+      "oldData",
+      JSON.stringify({
+        hackerNews: hackerNews,
+        page: page,
+        techCategory: techCategory,
+        favsHackerNews: favsHackerNews,
+        isAllNews: isAllNews,
+      })
+    );
   };
 
-  const handleChangePage = ({target}, newPage) => {
+  const handleChangePage = ({ target }, newPage) => {
     if (target.value == pageMenu) return;
-    setPageMenu((pageMenu==="All") ? "Faves": "All");
-    onDispatch()
+    setPageMenu(pageMenu === "All" ? "Faves" : "All");
+    onDispatch();
   };
 
   return (
@@ -38,15 +39,38 @@ export const HackerNewsMenu = () => {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
+        mt: { xs: 2.5, sm: 3, md: 2, lg: 2 },
+        mb: { xs: 2.5, sm: 2, md: 2, lg: 1 }
       }}
       color="primary"
       exclusive
-      value = {pageMenu}
-      onChange= {handleChangePage}
+      value={pageMenu}
+      onChange={handleChangePage}
     >
-      <ToggleButton className="toogle-option" value="All">All news</ToggleButton>
-      <ToggleButton className="toogle-option" disabled={!(favsHackerNews.length > 3)} value="Faves">Faves</ToggleButton>
-      
+      <ToggleButton
+        sx={{
+          textTransform: "capitalize",
+          fontSize: {xs:"12px", sm: "10px", md: "10px", lg: "10px"},
+          px: {xs:"2em", sm: "3em", md: "2.5em", lg: "3.5em"},
+          py: {xs: 1, sm: 0.5, md: 0.5, lg: 0.5}
+
+        }}
+        value="All"
+      >
+        All news
+      </ToggleButton>
+      <ToggleButton
+        sx={{
+          textTransform: "capitalize",
+          fontSize: {xs:"12px", sm: "10px", md: "10px", lg: "10px"},
+          px: {xs:"2.5em", sm: "3.5em", md: "3em", lg: "4em"},
+          py: {xs: 1, sm: 0.5, md: 0.5, lg: 0.5}
+        }}
+        disabled={!(favsHackerNews.length > 3)}
+        value="Faves"
+      >
+        Faves
+      </ToggleButton>
     </ToggleButtonGroup>
   );
 };

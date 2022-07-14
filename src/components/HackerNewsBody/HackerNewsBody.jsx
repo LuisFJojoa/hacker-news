@@ -18,12 +18,9 @@ export const HackerNewsBody = () => {
     <>
       <Box>
         <Box>
-          <div className="header-body-container">
+          <div>
             <HackerNewsMenu />
-            {
-              isAllNews && <HackerNewsDropbox /> 
-            }
-            
+            {isAllNews && <HackerNewsDropbox />}
           </div>
         </Box>
 
@@ -45,6 +42,8 @@ export const HackerNewsBody = () => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
+            pt: 0.2,
+            pb: { xs: "2.5em", sm: "3.5em", md: "3em", lg: "4em" },
           }}
         >
           <HackerNewsPagination />
