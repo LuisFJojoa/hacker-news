@@ -31,23 +31,24 @@ export const HackerNewsBody = () => {
             <HackerNewsGrid hackerNews={[...favsHackerNews]} />
           </Box>
         ) : (
-          <Box>
-            <HackerNewsGrid hackerNews={[...hackerNews]} />
-          </Box>
+          <>
+            <Box>
+              <HackerNewsGrid hackerNews={[...hackerNews]} />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                pt: 0.2,
+                pb: { xs: "2.5em", sm: "3.5em", md: "3em", lg: "4em" },
+              }}
+            >
+              <HackerNewsPagination />
+            </Box>
+          </>
         )}
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            pt: 0.2,
-            pb: { xs: "2.5em", sm: "3.5em", md: "3em", lg: "4em" },
-          }}
-        >
-          <HackerNewsPagination />
-        </Box>
       </Box>
     </>
   );
