@@ -27,4 +27,4 @@ Para el despliegue de la aplicación se utilizaron _Github-Pages_ y _Netlify_, a
 [Hacker news](https://hackernewsreign.netlify.app/)
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ con ❤️ por [Fernando Jojoa](https://github.com/LuisFJojoa/) 😊
