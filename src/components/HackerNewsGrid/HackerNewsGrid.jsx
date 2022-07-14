@@ -9,9 +9,9 @@ export const HackerNewsGrid = ({ hackerNews }) => {
         <Grid
           container
           direction="row"
-          justifyContent="space-around"
-          columnSpacing={{ xs: 2, sm: 4, md: 8, lg: 8 }}
-          columns={{ xs: 10, sm: 10, md: 14, lg: 16 }}
+          justifyContent="space-evenly"
+          columnSpacing={{ xs: 2, sm: 4, md: 1, lg: 2 }}
+          columns={{ xs: 10, sm: 10, md: 14, lg: 12 }}
         >
           {hackerNews &&
             hackerNews.map((hackerNew) => (

@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
-import "/styles.css";
+import "./styles.css";
 import { getHoursToCreated } from "../../helpers/convertDateToHours";
 import HackerNewsAppContext from "../../context/HackerNewsAppContext";
 
@@ -14,29 +14,31 @@ import fullFavSvg from "../../assets/svg/iconmonstr-favorite-3.svg";
 
 export const HackerNewsItem = (hackerNew) => {
   const { title, created_at, author, url, favState } = hackerNew;
-  const [svgIcon, setSvgIcon] = useState();
+  const [stateFav, setStateFav] = useState(favState)
+  const [svgIcon, setSvgIcon] = useState(stateFav ? fullFavSvg:emptyFavSvg);
   const { dispatch, page, techCategory, favsHackerNews, hackerNews } =
     useContext(HackerNewsAppContext);
 
   useEffect(() => {
-    setSvgIcon(favState ? fullFavSvg : emptyFavSvg);
-  }, []);
+    setSvgIcon(stateFav ? fullFavSvg:emptyFavSvg);
+  }, [stateFav]);
 
   const onAddFav = (evt) => {
     evt.preventDefault(); 
-    evt.stopPropagation(); 
-    setSvgIcon(favState ?  emptyFavSvg: fullFavSvg);
+    evt.stopPropagation();
+    setStateFav(!stateFav)
+    setSvgIcon(stateFav ? fullFavSvg : emptyFavSvg); 
     onDispatch();
   };
 
   const onDispatch = () => {
 
-    if (!favState) {
+    if (!stateFav) {
       dispatch({
         type: "UPDATE_FAV",
         favHackerNew: hackerNew,
         favsHackerNews: favsHackerNews
-      });
+      })
 
       dispatch({
         type: "UPDATE_STATE_FAV",
@@ -79,7 +81,7 @@ export const HackerNewsItem = (hackerNew) => {
 
   return (
     <>
-      <Grid item xs={8} sm={8} md={6} lg={6}>
+      <Grid item xs={8} sm={8} md={6} lg={5}>
         <a href={`${url}`} target="_blank">
           <Item className="item-new">
             <div className="new-card">

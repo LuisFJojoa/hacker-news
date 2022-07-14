@@ -42,7 +42,7 @@ export const HackerNewsDropbox = () => {
     <FormControl
       sx={{
         width: { xs: "78%", sm: "30%", md: "30%", lg: "15%" },
-        ml: { xs: 5, sm: 10, md: 10, lg: 12.5 },
+        ml: { xs: 5, sm: 10, md: 10, lg: 11 },
         mt: { xs: 3, sm: 1, md: 1, lg: 1 },
         mb: { xs: 3}
       }}
