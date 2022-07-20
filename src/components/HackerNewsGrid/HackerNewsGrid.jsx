@@ -1,11 +1,17 @@
 import { HackerNewsItem } from "..";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import './styles.css'
 
 export const HackerNewsGrid = ({ hackerNews }) => {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+
+      <div className="grid-container">
+      {hackerNews &&
+            hackerNews.map((hackerNew) => (
+              <HackerNewsItem key={hackerNew.id} {...hackerNew} />
+            ))}
+      </div>
+      {/* <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
           direction="row"
@@ -13,12 +19,9 @@ export const HackerNewsGrid = ({ hackerNews }) => {
           columnSpacing={{ xs: 2, sm: 4, md: 1, lg: 2 }}
           columns={{ xs: 10, sm: 10, md: 14, lg: 12 }}
         >
-          {hackerNews &&
-            hackerNews.map((hackerNew) => (
-              <HackerNewsItem key={hackerNew.id} {...hackerNew} />
-            ))}
+          
         </Grid>
-      </Box>
+      </Box> */}
     </>
   );
 };

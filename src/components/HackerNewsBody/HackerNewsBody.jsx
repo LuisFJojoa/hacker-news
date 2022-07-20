@@ -16,40 +16,35 @@ export const HackerNewsBody = () => {
   const { hackerNews, isLoading } = useFetchHackerNews(techCategory, page);
   return (
     <>
-      <Box>
-        <Box>
-          <div>
-            <HackerNewsMenu />
-            {isAllNews && <HackerNewsDropbox />}
-          </div>
-        </Box>
+      <div>
+        <HackerNewsMenu />
+        {isAllNews && <HackerNewsDropbox />}
+      </div>
 
-        {isLoading ? (
-          <h1>Loading...</h1>
-        ) : isAllNews === false ? (
-          <Box>
-            <HackerNewsGrid hackerNews={[...favsHackerNews]} />
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : isAllNews === false ? (
+
+        <HackerNewsGrid hackerNews={[...favsHackerNews]} />
+
+      ) : (
+        <>
+          <HackerNewsGrid hackerNews={[...hackerNews]} />
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              pt: 0.2,
+              pb: { xs: "2.5em", sm: "3.5em", md: "3em", lg: "4em" },
+            }}
+          >
+            <HackerNewsPagination />
           </Box>
-        ) : (
-          <>
-            <Box>
-              <HackerNewsGrid hackerNews={[...hackerNews]} />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                pt: 0.2,
-                pb: { xs: "2.5em", sm: "3.5em", md: "3em", lg: "4em" },
-              }}
-            >
-              <HackerNewsPagination />
-            </Box>
-          </>
-        )}
-      </Box>
+        </>
+      )}
     </>
   );
 };

@@ -65,7 +65,7 @@ export const HackerNewsMenu = () => {
           px: {xs:"2.5em", sm: "3.5em", md: "3em", lg: "4em"},
           py: {xs: 1, sm: 0.5, md: 0.5, lg: 0.5}
         }}
-        disabled={!(favsHackerNews.length > 4)}
+        disabled={!(favsHackerNews.length > 0)}
         value="Faves"
       >
         Faves
